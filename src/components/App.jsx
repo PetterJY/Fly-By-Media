@@ -1,11 +1,11 @@
 import { Routes, Route, Outlet, Navigate } from 'react-router-dom';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Home from './components/Home';
-import AboutUs from './components/AboutUs';
-import ContactUs from './components/ContactUs';
-import PreviousOrders from './components/PreviousOrders';
-import PageNotFound from './components/PageNotFound';
+import Header from './Header/Header';
+import Footer from './Footer/Footer';
+import Home from './Home/Home';
+import AboutUs from './AboutUs/AboutUs';
+import ContactUs from './ContactUs/ContactUs';
+import PreviousOrders from './PreviousOrders/PreviousOrders';
+import PageNotFound from './PageNotFound/PageNotFound';
 import '../index.css';
 
 function App() {
