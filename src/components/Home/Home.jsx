@@ -2,10 +2,10 @@ import './Home.css';
 
 const Home = () => {
   return (
-    <div className="home">
-      <h1>Welcome to the Home Page</h1>
+    <main>
+      <h3>Fang forvandlingen fra nye høyder</h3>
       <p>This is the main page of our application.</p>
-    </div>
+    </main>
   );
 }
 

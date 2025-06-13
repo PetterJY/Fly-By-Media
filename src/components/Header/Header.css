@@ -1,0 +1,52 @@
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  
+  padding: 1%;
+
+  background-color: var(--secondary-background-color);
+  color: white;
+}
+
+header button {
+  cursor: pointer;
+  margin-left: 5%;
+}
+
+header img {
+  width: 120px;
+}
+
+header nav {
+  display: flex;
+  justify-content: center;
+
+  flex: 1; 
+  margin-left: -5%;
+}
+
+header ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: end;
+  gap: 5%;
+}
+
+header ul li {
+  font-size: 1.8em;
+  font-weight: 700;             
+  margin: 0 15px;
+  letter-spacing: 1px;
+  color: white;             
+  display: inline-block;
+}
+
+header ul li:hover,
+header ul li a:hover,
+header ul li a:focus {
+  text-decoration: underline;
+}
