@@ -1,0 +1,53 @@
+.footer {
+  width: 100%;
+  background: #e3eaf3;
+  color: #2a4365;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 32px;
+  font-size: 1rem;
+  gap: 12px;
+  flex-wrap: wrap;
+  border-top: 1px solid #b5c6d6;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-logo {
+  height: 38px;
+  width: auto;
+}
+
+.footer-company {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.footer-center {
+  flex: 1;
+  text-align: center;
+  font-size: 0.98rem;
+}
+
+.footer-right {
+  display: flex;
+  gap: 16px;
+}
+
+.footer-right a {
+  color: #2a4365;
+  font-size: 1.3rem;
+  transition: color 0.2s;
+}
+
+.footer-right a:hover {
+  color: #1a2540;
+}
+
+/* For Font Awesome icons */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');

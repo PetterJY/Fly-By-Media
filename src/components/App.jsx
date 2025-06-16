@@ -13,10 +13,10 @@ function App() {
     <Routes>
       <Route path="/" element={<Root />}>
         <Route index element={<Navigate to={"/home"} replace />} />
-        <Route path="home" element={<Home />} />
-        <Route path="about" element={<AboutUs />} />
-        <Route path="contact" element={<ContactUs />} />
-        <Route path="previous-orders" element={<PreviousOrders />} />
+        <Route path="hjem" element={<Home />} />
+        <Route path="om-oss" element={<AboutUs />} />
+        <Route path="kontakt-oss" element={<ContactUs />} />
+        <Route path="tidligere-jobber" element={<PreviousOrders />} />
         <Route path="*" element={<PageNotFound />} />
       </Route>
     </Routes>
