@@ -11,7 +11,11 @@ const Home = () => {
   const RedirectPreviousOrders = () => {
     navigate('/tidligere-jobber');
   }
-  
+
+  const RedirectAboutUs = () => {
+    navigate('/om-oss');
+  }
+
   return (
     <main className="home-main">
       <section className="intro">
@@ -30,8 +34,9 @@ const Home = () => {
               og leverer alltid høykvalitetsresultater tilpasset dine behov!
             </p>
             <div className="home-buttons">
-              <button className="primary-btn" onClick={RedirectContactUs}>Kontakt oss</button>
-              <button className="secondary-btn" onClick={RedirectPreviousOrders}>Se tidligere oppdrag</button>
+              <button className="home-btn" onClick={RedirectAboutUs}>Om oss</button>
+              <button className="home-btn" onClick={RedirectContactUs}>Kontakt oss</button>
+              <button className="home-btn" onClick={RedirectPreviousOrders}>Se tidligere oppdrag</button>
             </div>
           </div>
         </div>

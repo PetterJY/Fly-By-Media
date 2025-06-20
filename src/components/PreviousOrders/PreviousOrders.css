@@ -1,0 +1,68 @@
+.orders-main {
+  padding: 48px 0 32px 0;
+  min-height: 60vh;
+  background: #f7fafc;
+}
+
+.orders-intro {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.orders-intro-title {
+  color: #2a4365;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.orders-main-title {
+  font-size: 2.2rem;
+  color: #1a2540;
+  margin-bottom: 24px;
+  font-weight: 800;
+}
+
+.orders-content {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+}
+
+.orders-list {
+  flex: 1;
+  font-size: 1.08rem;
+  color: #2a4365;
+  line-height: 1.7;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.orders-placeholder {
+  margin-top: 32px;
+  background: #e3eaf3;
+  border-radius: 10px;
+  padding: 32px 0;
+  text-align: center;
+  color: #4a5568;
+  font-size: 1.1rem;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(42, 67, 101, 0.07);
+}
+
+@media (max-width: 700px) {
+  .orders-content {
+    flex-direction: column;
+    gap: 18px;
+  }
+  .orders-main-title {
+    font-size: 1.4rem;
+  }
+  .orders-placeholder {
+    padding: 20px 0;
+    font-size: 1rem;
+  }
+}

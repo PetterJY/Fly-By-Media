@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main, .about-main, .home-main {
+  flex: 1;
+}
+
 :root {
   --primary-color: #2a4365;
   --secondary-color: none;

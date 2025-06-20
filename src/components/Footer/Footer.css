@@ -37,7 +37,7 @@
 .footer-right {
   display: flex;
   gap: 16px;
-}
+} 
 
 .footer-right a {
   color: #2a4365;
