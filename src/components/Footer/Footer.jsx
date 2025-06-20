@@ -1,4 +1,4 @@
-import Logo from '../../resources/logo/logo-transparent.png';
+import Logo from '../../resources/logo/logo-grayscale-transparent.png';
 import './Footer.css';
 
 const Footer = () => {

@@ -12,7 +12,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Root />}>
-        <Route index element={<Navigate to={"/home"} replace />} />
+        <Route index element={<Navigate to={"/hjem"} replace />} />
         <Route path="hjem" element={<Home />} />
         <Route path="om-oss" element={<AboutUs />} />
         <Route path="kontakt-oss" element={<ContactUs />} />

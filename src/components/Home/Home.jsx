@@ -38,7 +38,7 @@ const Home = () => {
       </section>
       <section className="stats">
         <div className="stat">
-          <div className="stat-number">21</div>
+          <div className="stat-number">1</div>
           <div className="stat-label">Ansatte</div>
         </div>
         <div className="stat">
