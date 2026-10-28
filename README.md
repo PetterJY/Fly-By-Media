@@ -1,70 +1,105 @@
-# Getting Started with Create React App
+<p align="center">
+  <img src="src/resources/logo/logo-transparent-480x254.png" alt="Fly By Media" width="320" />
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Fly By Media
 
-## Available Scripts
+Website for **Fly By Media**, a drone photography company in Trøndelag, Norway. The company takes aerial photos and videos for real estate, inspections and marketing. The site itself is in Norwegian.
 
-In the project directory, you can run:
+**Live demo:** [flybymedia.seterlab.no](https://flybymedia.seterlab.no)
 
-### `npm start`
+## Pages
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+| Path | Page |
+| --- | --- |
+| `/hjem` | Home. Introduction, key numbers and links to the other pages |
+| `/om-oss` | About us |
+| `/kontakt-oss` | Contact information |
+| `/tidligere-jobber` | Previous jobs |
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+`/` redirects to `/hjem`, and any unknown path shows a 404 page.
 
-### `npm test`
+## Tech stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [React 19](https://react.dev/) with [React Router 7](https://reactrouter.com/)
+- [Tailwind CSS 3](https://tailwindcss.com/) through PostCSS, alongside plain CSS for each component
+- [Create React App](https://create-react-app.dev/) (`react-scripts`) for the dev server and production build
+- [Font Awesome](https://fontawesome.com/) for the social icons in the footer
+- [Podman](https://podman.io/) for the container. The site runs behind an nginx reverse proxy.
 
-### `npm run build`
+## Project structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+├── public/                 # index.html, favicon, app icons and manifest
+├── src/
+│   ├── components/
+│   │   ├── App.jsx         # Routes and the shared layout (header, page, footer)
+│   │   ├── Header/
+│   │   ├── Footer/
+│   │   ├── Home/
+│   │   ├── AboutUs/
+│   │   ├── ContactUs/
+│   │   ├── PreviousOrders/
+│   │   └── PageNotFound/
+│   ├── resources/logo/     # Logo files (PNG and SVG)
+│   ├── index.css           # Tailwind directives and global styles
+│   └── index.js            # Entry point
+├── doc/                    # Planning notes
+├── Containerfile           # Container build
+├── tailwind.config.js
+└── postcss.config.js
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Running locally
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+You need [Node.js](https://nodejs.org/) 18 or newer.
 
-### `npm run eject`
+```bash
+npm install
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The site opens at [http://localhost:3000](http://localhost:3000) and reloads when you save a file.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To make a production build in `build/`:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+npm run build
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Running with Podman
 
-## Learn More
+The `Containerfile` builds the site in a Node container and serves the result with [`serve`](https://github.com/vercel/serve) on port 3000. Any path the server doesn't recognise falls back to `index.html`, so React Router handles it.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+podman build -t flybymedia .
+podman run -d --name flybymedia -p 127.0.0.1:3000:3000 flybymedia
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The site is then at [http://localhost:3000](http://localhost:3000).
 
-### Code Splitting
+### Behind a reverse proxy
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+In production the container publishes no ports. It shares a Podman network with an nginx container, and nginx forwards the subdomain to it:
 
-### Analyzing the Bundle Size
+```nginx
+server {
+    listen 443 ssl;
+    server_name flybymedia.example.com;
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    location = / {
+        return 302 /hjem;
+    }
 
-### Making a Progressive Web App
+    location / {
+        proxy_pass http://flybymedia:3000;
+    }
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+To deploy a new version, rebuild the image and restart the container:
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+podman build -t flybymedia .
+systemctl --user restart flybymedia
+```
