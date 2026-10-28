@@ -4,7 +4,7 @@
 
 # Disclaimer
 
-This was meant to be a website for a what was supposed to be a drone photography company. However, it never took flight (haha), which is why this is barebones, and not a complete website.
+This was meant to be a website for a what was supposed to be a drone photography company. However, it never took flight (haha), which is why this is bare-bones instead of a complete website.
 
 # Fly By Media
 
