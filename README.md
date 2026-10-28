@@ -2,11 +2,13 @@
   <img src="src/resources/logo/logo-transparent-480x254.png" alt="Fly By Media" width="320" />
 </p>
 
+# Disclaimer
+
+This was meant to be a website for a what was supposed to be a drone photography company. However, it never took flight (haha), which is why this is barebones, and not a complete website.
+
 # Fly By Media
 
-Website for **Fly By Media**, a drone photography company in Trøndelag, Norway. The company takes aerial photos and videos for real estate, inspections and marketing. The site itself is in Norwegian.
-
-**Live demo:** [flybymedia.seterlab.no](https://flybymedia.seterlab.no)
+Website for **Fly By Media**, a drone photography company in Trøndelag, Norway. The company takes aerial photos and videos for real estate, inspections and marketing. 
 
 ## Pages
 
@@ -24,31 +26,7 @@ Website for **Fly By Media**, a drone photography company in Trøndelag, Norway.
 - [React 19](https://react.dev/) with [React Router 7](https://reactrouter.com/)
 - [Tailwind CSS 3](https://tailwindcss.com/) through PostCSS, alongside plain CSS for each component
 - [Create React App](https://create-react-app.dev/) (`react-scripts`) for the dev server and production build
-- [Font Awesome](https://fontawesome.com/) for the social icons in the footer
 - [Podman](https://podman.io/) for the container. The site runs behind an nginx reverse proxy.
-
-## Project structure
-
-```
-├── public/                 # index.html, favicon, app icons and manifest
-├── src/
-│   ├── components/
-│   │   ├── App.jsx         # Routes and the shared layout (header, page, footer)
-│   │   ├── Header/
-│   │   ├── Footer/
-│   │   ├── Home/
-│   │   ├── AboutUs/
-│   │   ├── ContactUs/
-│   │   ├── PreviousOrders/
-│   │   └── PageNotFound/
-│   ├── resources/logo/     # Logo files (PNG and SVG)
-│   ├── index.css           # Tailwind directives and global styles
-│   └── index.js            # Entry point
-├── doc/                    # Planning notes
-├── Containerfile           # Container build
-├── tailwind.config.js
-└── postcss.config.js
-```
 
 ## Running locally
 
