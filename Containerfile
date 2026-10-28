@@ -17,7 +17,7 @@ RUN npm install -g serve@14
 COPY --from=build /app/build ./build
 
 USER node
-EXPOSE 3001
+EXPOSE 3000
 
 # -s = single-page app mode, so React Router paths fall back to index.html
-CMD ["serve", "-s", "build", "-l", "3001"]
+CMD ["serve", "-s", "build", "-l", "3000"]
